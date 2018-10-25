@@ -199,7 +199,7 @@ function gettingServiceData($thisPost, $thisSlug){
         <?php echo $postExcerpt; ?>
       </p>
       <a class="button naked" href="./corretaje.html">
-        <img alt="agregar" src="<?php echo get_template_directory_uri() . '/img/'?>logo-cimbra.svg"title="agregar" />
+        <img alt="agregar" src="<?php echo get_template_directory_uri() . '/img/'?>icon-agregar.svg"title="agregar" />
         Seguir leyendo
       </a>
     </article>
@@ -233,7 +233,7 @@ function gettingServiceData($thisPost, $thisSlug){
         <?php echo $postExcerpt; ?>
       </p>
       <a class="button naked" href="./tasacion.html">
-        <img alt="agregar" src="<?php echo get_template_directory_uri() . '/img/'?>logo-cimbra.svg"/> Seguir leyendo
+        <img alt="agregar" src="<?php echo get_template_directory_uri() . '/img/'?>icon-agregar.svg"/> Seguir leyendo
       </a>
     </article>
   </div>

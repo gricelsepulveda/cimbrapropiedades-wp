@@ -129,7 +129,10 @@
   </ul>
 </div>
 <!--UF BAND-->
-<div class="cm-uf-band flex row center">Lunes 27 de Agosto de 2018, Valor UF: $29.238,94 CLP | $44.25 USD</div>
+<?php
+  include('uf-band.php');
+?>
+
 
  <!--GETTING SERVICE TITLE-->
  <?php

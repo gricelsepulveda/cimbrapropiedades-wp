@@ -1,13 +1,13 @@
 <!--TEMPLATE DESCRIPTION-->
-<?php 
+<?php
   /*
   * Template Name: Propiedad Template
   * Template Post Type: post, page, product
   */
 ?>
-
+ 
 <?php get_header(); ?>
-
+ 
 <!-- FUNCTION QUERY DATA-->
 <?php
   $pesos = get_post_meta($post->ID, 'precio-pesos', true);
@@ -21,34 +21,33 @@
   $title =  apply_filters( 'the_title', $post->post_title);
   $content = apply_filters( 'the_content', $post->post_content);
   $content = preg_replace('/<img[^>]+./' , '' , $content);
+ 
+?>
+
+<?php
+  include('simple_html_dom.php');
+// //  //Create a DOM object
+  $html = new simple_html_dom();
+  // Load HTML from a string
+  $html->load($content);
+  // Find li elmenets within ul tags
+  $list = $html->find('ul+li');
+  // Find succeeded
+  if ($list) {
+    // Display output as code
+    foreach($list as $key => $elm) {
+      echo "<li>";
+      echo htmlentities($elm->innertext);
+      echo "</li>";
+    }
+  }
 
 ?>
 
 <?php
- //Create a DOM object
- $html = new simple_html_dom();
- // Load HTML from a string
- $html->load($content);
- // Find li elmenets within ul tags
- $list = $html->find('ul+li');
- // Find succeeded
- if ($list) {
-     echo "<br/> Found ". count($list);
-     // Display output as code
-     echo "<li>";
- foreach($list as $key => $elm) {
-   if($elm->parent()->id == "parent") {
-     echo htmlentities($elm->outertext);
-     echo "<hr/>";
-   }
- }
+  $content = preg_replace("/<li[^>]*>.*?<\/li>/is","" , $content);
+?>
  
-?>
-
-<?php 
-  endforeach(); 
-?>
-
 <!--SLIDER -->
 <div class="cm-noslider-wrapper propierty">
   <div class="flex col start cm-flex-propierty-noslider">
@@ -59,12 +58,12 @@
     </p>
   </div>
 </div>
-
+ 
 <!--UF BAND-->
 <?php
   include('uf-band.php');
 ?>
-
+ 
 <!--PROPIERTY PAGE-->
 <section class="cm-propierty-page flex col center"><a class="button naked" href="#"><i class="fas fa-arrow-left"></i>Volver</a>
     <h2 class="flex start row cm-section-title"><?php echo $title ?></h2>
@@ -112,11 +111,11 @@
       </div>
     </div>
   </section>
-
-
+ 
+ 
 <!--CONTACT SECTION-->
 <?php
   include('contact.php');
 ?>
-
+ 
 <?php get_footer(); ?>

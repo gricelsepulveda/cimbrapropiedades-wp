@@ -10,6 +10,12 @@
  
 <!-- FUNCTION QUERY DATA-->
 <?php
+
+  if ( have_posts() ) : while ( have_posts() ) : the_post();
+  endwhile;
+  endif;
+
+  
   $pesos = get_post_meta($post->ID, 'precio-pesos', true);
   $uf = get_post_meta($post->ID, 'precio-uf', true);
   $m2 = get_post_meta($post->ID, 'm2', true);
@@ -17,37 +23,16 @@
   $location = get_post_meta($post->ID, 'ubicacion', true);
   $postFeatImg = get_the_post_thumbnail_url($post->ID);
   $currentPost   = get_post($post->ID);
-  $excerpt =  apply_filters( 'the_excerpt', $post->post_excerpt);
+  $excerpt =  get_the_excerpt($post->ID);
   $title =  apply_filters( 'the_title', $post->post_title);
   $content = apply_filters( 'the_content', $post->post_content);
   $content = preg_replace('/<img[^>]+./' , '' , $content);
- 
-?>
-
-<?php
-  include('simple_html_dom.php');
-// //  //Create a DOM object
-  $html = new simple_html_dom();
-  // Load HTML from a string
-  $html->load($content);
-  // Find li elmenets within ul tags
-  $list = $html->find('ul+li');
-  // Find succeeded
-  if ($list) {
-    // Display output as code
-    foreach($list as $key => $elm) {
-      echo "<li>";
-      echo htmlentities($elm->innertext);
-      echo "</li>";
-    }
-  }
-
 ?>
 
 <?php
   $content = preg_replace("/<li[^>]*>.*?<\/li>/is","" , $content);
 ?>
- 
+
 <!--SLIDER -->
 <div class="cm-noslider-wrapper propierty">
   <div class="flex col start cm-flex-propierty-noslider">
@@ -58,25 +43,50 @@
     </p>
   </div>
 </div>
- 
+
 <!--UF BAND-->
 <?php
   include('uf-band.php');
 ?>
- 
+
 <!--PROPIERTY PAGE-->
 <section class="cm-propierty-page flex col center"><a class="button naked" href="#"><i class="fas fa-arrow-left"></i>Volver</a>
     <h2 class="flex start row cm-section-title"><?php echo $title ?></h2>
     <div class="flex row center cm-flex-property">
-      <div class="cm-container-propierty-images">
+      <?php
+        $attachments = get_children(array('post_parent' => $post->ID,
+        'post_status' => 'inherit',
+        'post_type' => 'attachment',
+        'post_mime_type' => 'image',
+        'order' => 'ASC',
+        'orderby' => 'menu_order ID'));
+        foreach($attachments as $att_id => $attachment) {
+          $full_img_url = wp_get_attachment_url($attachment->ID);
+        }
+        $firstElement = reset($attachment);
+        $firstImgURL = wp_get_attachment_url($firstElement);
+      ?>
+      <div class="cm-container-propierty-images" style="background-image: url(<?php echo $firstImgURL; ?>);">
         <nav class="cm-propierty-carrousel">
           <ul class="flex row start">
-            <li class="active"></li>
-            <li></li>
-            <li></li>
+            <?php
+              $attachments = get_children(array('post_parent' => $post->ID,
+              'post_status' => 'inherit',
+              'post_type' => 'attachment',
+              'post_mime_type' => 'image',
+              'order' => 'ASC',
+              'orderby' => 'menu_order ID'));
+              foreach($attachments as $att_id => $attachment) {
+                $full_img_url = wp_get_attachment_url($attachment->ID);
+                echo "<li style='background-image:url(" . $full_img_url . "')></li>";
+              }
+            ?>
           </ul>
         </nav>
       </div>
+      <script>
+        
+      </script>
       <div class="flex col start cm-property-info"><span class="cm-price-uf"><?php echo $uf; ?>UF</span><span class="cm-price">$<?php echo $pesos; ?></span>
         <div class="flex row start cm-buttons-property"><a class="button normal" data-scroll="" href="#contact">Consultar
             por propiedad</a>
@@ -89,24 +99,64 @@
         <p class="cm-text-propierty"><?php echo $content; ?></p>
         <h5>Resumen</h5>
         <div class="flex row start cm-propierty-badges">
-          <div class="flex row start cm-resume">
-            <div class="cm-propierty-badge"><img src="../assets/img/icon-dormitorio.svg" /></div><span>3 Dormitorios</span>
-          </div>
-          <div class="flex row start cm-resume">
-            <div class="cm-propierty-badge"><img src="../assets/img/icon-balcon.svg" /></div><span>Balcón</span>
-          </div>
-          <div class="flex row start cm-resume">
-            <div class="cm-propierty-badge"><img src="../assets/img/icon-bano.svg" /></div><span>2 Baños</span>
-          </div>
-          <div class="flex row start cm-resume">
-            <div class="cm-propierty-badge"><img src="../assets/img/icon-estacionamiento.svg" /></div><span>Estacionamiento</span>
-          </div>
-          <div class="flex row start cm-resume">
-            <div class="cm-propierty-badge"><img src="../assets/img/icon-bodega.svg" /></div><span>Bodega</span>
-          </div>
-          <div class="flex row start cm-resume">
-            <div class="cm-propierty-badge"><img src="../assets/img/icon-area-verde.svg" /></div><span>Áreas verdes</span>
-          </div>
+          <?php
+            $content = apply_filters( 'the_content', $post->post_content);
+            include('simple_html_dom.php');
+            //Create a DOM object
+            $html = new simple_html_dom();
+            // Load HTML from a string
+            $html->load($content);
+            // Find li elmenets within ul tags
+            $list = $html->find('ul+li');
+            // Find succeeded
+            if ($list) {
+              // Display output as code
+              foreach($list as $key => $elm) {
+                echo "<div class='flex row start cm-resume'>";
+
+                $string = htmlentities($elm->innertext);
+                switch (true) {
+                  case stripos($string, 'dormitorio') !== false:
+                    echo "<div class='cm-propierty-badge'><img src='" . get_template_directory_uri() . "/img/icon-dormitorio.svg'></div>";
+                    echo "<span>";
+                    echo $string;
+                    echo "</span>";
+                    break;
+                  case stripos($string, 'a&ntilde;o') !== false:
+                    echo "<div class='cm-propierty-badge'><img src='" . get_template_directory_uri() . "/img/icon-bano.svg'></div>";
+                    echo "<span>";
+                    echo $string;
+                    echo "</span>";
+                    break;
+                  case stripos($string, 'estacionamiento') !== false:
+                    echo "<div class='cm-propierty-badge'><img src='" . get_template_directory_uri() . "/img/icon-estacionamiento.svg'></div>";
+                    echo "<span>";
+                    echo $string;
+                    echo "</span>";
+                    break;
+                  case stripos($string, 'alc') !== false:
+                    echo "<div class='cm-propierty-badge'><img src='" . get_template_directory_uri() . "/img/icon-balcon.svg'></div>";
+                    echo "<span>";
+                    echo $string;
+                    echo "</span>";
+                    break;
+                  case stripos($string, 'bodega') !== false:
+                    echo "<div class='cm-propierty-badge'><img src='" . get_template_directory_uri() . "/img/icon-bodega.svg'></div>";
+                    echo "<span>";
+                    echo $string;
+                    echo "</span>";
+                    break;
+                  case stripos($string, 'verde') !== false:
+                    echo "<div class='cm-propierty-badge'><img src='" . get_template_directory_uri() . "/img/icon-area-verde.svg'></div>";
+                    echo "<span>";
+                    echo $string;
+                    echo "</span>";
+                    break;
+                }
+                echo "</div>";
+              }
+            }
+          ?>
         </div>
       </div>
     </div>

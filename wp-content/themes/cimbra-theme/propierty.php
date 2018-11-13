@@ -58,12 +58,13 @@
         'post_status' => 'inherit',
         'post_type' => 'attachment',
         'post_mime_type' => 'image',
-        'order' => 'ASC',
+        'order' => 'DESC',
         'orderby' => 'menu_order ID'));
         foreach($attachments as $att_id => $attachment) {
           $full_img_url = wp_get_attachment_url($attachment->ID);
         }
         $firstElement = reset($attachment);
+        
         $firstImgURL = wp_get_attachment_url($firstElement);
       ?>
       <div class="cm-container-propierty-images" style="background-image: url(<?php echo $firstImgURL; ?>);">
@@ -84,11 +85,8 @@
           </ul>
         </nav>
       </div>
-      <script>
-        
-      </script>
       <div class="flex col start cm-property-info"><span class="cm-price-uf"><?php echo $uf; ?>UF</span><span class="cm-price">$<?php echo $pesos; ?></span>
-        <div class="flex row start cm-buttons-property"><a class="button normal" data-scroll="" href="#contact">Consultar
+        <div class="flex row start cm-buttons-property"><a class="button normal" data-scroll="" href="#contacto">Consultar
             por propiedad</a>
           <div class="flex row start cm-social">
             <p>Compartir</p><a class="button facebook" href="#"><i class="fab fa-facebook-f"></i></a><a class="button whatsapp"
@@ -169,3 +167,21 @@
 ?>
  
 <?php get_footer(); ?>
+
+<script>
+  $(document).ready(function () {
+    var images = $(".cm-propierty-carrousel").find("li");
+
+    $(images[0]).addClass('active');
+
+    $(images).click(function(){
+      var currentImg = $(this);
+
+      $(images).removeClass('active');
+      $(this).addClass('active');
+      
+      var imgUrl = currentImg[0]["style"]["background-image"].split('"')[1];
+      $(".cm-container-propierty-images").css('background-image',  'url(' + imgUrl + ')');
+    });
+  });
+</script>

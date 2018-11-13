@@ -142,7 +142,7 @@
 
 
 <!--SERVICES-->
-<section class="cm-services" id="services">
+<section class="cm-services" id="servicios">
   <h2 class="flex center row cm-section-title"><?php echo $postTitle; ?></h2>
   <!-- FUNCTION QUERY DATA 2-->
 <?php
@@ -201,9 +201,9 @@ function gettingServiceData($thisPost, $thisSlug){
       <p class="text-center">
         <?php echo $postExcerpt; ?>
       </p>
-      <a class="button naked" href="./corretaje.html">
+      <a class="button naked" href="./corretaje">
         <img alt="agregar" src="<?php echo get_template_directory_uri() . '/img/'?>icon-agregar.svg"title="agregar" />
-        Seguir leyendo
+        &nbsp;Seguir leyendo
       </a>
     </article>
     <!--SERVICE 2-->
@@ -218,9 +218,9 @@ function gettingServiceData($thisPost, $thisSlug){
       <p class="text-center">
         <?php echo $postExcerpt; ?>
       </p>
-      <a class="button naked" href="./venta-arriendo.html">
+      <a class="button naked" href="./venta-arriendo">
         <img alt="agregar" src="<?php echo get_template_directory_uri() . '/img/'?>icon-agregar.svg" title="agregar" />
-        Seguir leyendo
+        &nbsp;Seguir leyendo
       </a>
     </article>
     <!--SERVICE 3-->
@@ -235,9 +235,9 @@ function gettingServiceData($thisPost, $thisSlug){
       <p class="text-center">
         <?php echo $postExcerpt; ?>
       </p>
-      <a class="button naked" href="./tasacion.html">
+      <a class="button naked" href="./tasacion">
         <img alt="agregar" src="<?php echo get_template_directory_uri() . '/img/'?>icon-agregar.svg"/>
-        Seguir leyendo
+        &nbsp;Seguir leyendo
       </a>
     </article>
   </div>

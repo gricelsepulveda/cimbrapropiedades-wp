@@ -1,8 +1,8 @@
 <section class="cm-showcase">
   <div class="flex row between cm-buttons-showcase">
     <h2 class="flex start row cm-section-title">Propiedades destacadas</h2>
-    <div class="flex row end"><a class="button normal" href="#contact">Publica con nosotros</a><a class="button highlight"
-        href="./propierties.html">Ver catálogo completo</a></div>
+    <div class="flex row end"><a class="button normal" href="#contacto">Publica con nosotros</a><a class="button highlight"
+        href="./catalogo">Ver catálogo completo</a></div>
   </div>
   <div class="flex row center cm-showcase-flex">
 <!-- FUNCTION QUERY DATA-->

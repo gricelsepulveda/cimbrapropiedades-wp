@@ -89,8 +89,10 @@
         <div class="flex row start cm-buttons-property"><a class="button normal" data-scroll="" href="#contacto">Consultar
             por propiedad</a>
           <div class="flex row start cm-social">
-            <p>Compartir</p><a class="button facebook" href="#"><i class="fab fa-facebook-f"></i></a><a class="button whatsapp"
-              href="#"><i class="fab fa-whatsapp"></i></a><a class="button twitter" href="#"><i class="fab fa-twitter"></i></a>
+            <p>Compartir</p>
+              <a class="button facebook" data-layout="button_count" href="#"><i class="fab fa-facebook-f"></i></a>
+              <a class="button whatsapp" href="#"><i class="fab fa-whatsapp"></i></a>
+              <a class="button twitter" href="#"><i class="fab fa-twitter"></i></a>
           </div>
         </div>
         <h5>Descripción</h5>
@@ -168,6 +170,11 @@
  
 <?php get_footer(); ?>
 
+  <script>
+    var $thisUrl = window.location.href;
+    $('.facebook').attr("data-href", $thisUrl);
+  </script>
+
 <script>
   $(document).ready(function () {
     var images = $(".cm-propierty-carrousel").find("li");
@@ -184,4 +191,15 @@
       $(".cm-container-propierty-images").css('background-image',  'url(' + imgUrl + ')');
     });
   });
+
+  // FACEBOOK
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+
 </script>

@@ -23,9 +23,9 @@
       <div class="cm-nav-wrapper flex col end">
         <ul class="cm-social-nav flex row end">
           <li class="cm-social-item flex row end"><a href="tel:+56989029333"><i class="fas fa-phone"></i>+56 9 89029333</a></li>
-          <li class="cm-social-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-          <li class="cm-social-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li class="cm-social-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li class="cm-social-item"><a href="https://www.facebook.com/CimbraPropiedades-466776470497653/"><i class="fab fa-facebook-f"></i></a></li>
+          <li class="cm-social-item"><a href="https://twitter.com/CimbraP"><i class="fab fa-twitter"></i></a></li>
+          <li class="cm-social-item"><a href="https://www.instagram.com/cimbrapropiedades/"><i class="fab fa-instagram"></i></a></li>
         </ul>
         <!-- MAIN NAVIGATION START -->
         <?php

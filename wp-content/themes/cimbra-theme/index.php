@@ -243,6 +243,13 @@ function gettingServiceData($thisPost, $thisSlug){
   </div>
 </section>
 
+<section class="flex row center">
+  <div class="cm-instagram-container">
+    <!-- LightWidget WIDGET -->
+    <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/04c5d041f5b056508ba0197204dcaa1a.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+  </div>
+</section>
+
 <!--SHOWCASE PROPIERTIES-->
 <?php
   include('highlight.php');

@@ -18,6 +18,9 @@
  * @package WordPress
  */
 
+define( 'WP_HOME', 'http://www.cimbrapropiedades.cl' );
+define( 'WP_SITEURL', 'http://www.cimbrapropiedades.cl' );
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', 'cimbrapropieadescm');

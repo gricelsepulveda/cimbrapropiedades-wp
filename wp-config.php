@@ -23,10 +23,10 @@
 define('DB_NAME', 'cimbrapropieades-cm');
 
 /** MySQL database username */
-define('DB_USER', 'jimenafuentealba');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'jimena2018');
+define('DB_PASSWORD', 'root');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');

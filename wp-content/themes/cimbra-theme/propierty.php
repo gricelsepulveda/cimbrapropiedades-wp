@@ -91,7 +91,7 @@
           <div class="flex row start cm-social">
             <p>Compartir</p>
               <a class="button facebook" data-layout="button_count" href="#"><i class="fab fa-facebook-f"></i></a>
-              <a class="button whatsapp" href="#"><i class="fab fa-whatsapp"></i></a>
+              <a class="button whatsapp" id="wasBtn" href=""><i class="fab fa-whatsapp"></i></a>
               <a class="button twitter" href="#"><i class="fab fa-twitter"></i></a>
           </div>
         </div>
@@ -190,6 +190,20 @@
       var imgUrl = currentImg[0]["style"]["background-image"].split('"')[1];
       $(".cm-container-propierty-images").css('background-image',  'url(' + imgUrl + ')');
     });
+    
+    //WHATSAPP BUTTON
+    var wasLink = "https://wa.me/";
+    var wasMessage = "text=Mira%20esta%20propiedad%20que%20encontre.%20Revisa%20el%20enlace%20";
+    var currentUrl = window.location.href;
+    var encodeUrl = encodeURI(currentUrl);
+    var wasFinalUrl = wasLink + wasMessage + encodeUrl;
+
+    function changeLink(){
+      var wasapButton = document.getElementById("wasBtn");
+      wasapButton.setAttribute('href', wasFinalUrl);
+    }
+    changeLink();
+
   });
 
   // FACEBOOK

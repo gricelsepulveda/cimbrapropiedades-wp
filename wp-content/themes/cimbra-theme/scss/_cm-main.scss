@@ -1011,8 +1011,8 @@ a.button.naked {
           padding-right: 0px;
           padding-top: 0px;
           padding-bottom: 0;
-          width: 36px;
-          height: 36px;
+          width: 32px;
+          height: 32px;
           margin-left: 10px;
           i {
             font-size: 18px;
@@ -1253,4 +1253,10 @@ a.button.naked {
       display: inline-block;
     }
   }
+}
+
+switch {
+  display: none!important;
+  opacity: 0!important;
+  visibility: hidden!important;
 }

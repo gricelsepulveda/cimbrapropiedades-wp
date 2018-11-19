@@ -90,9 +90,8 @@
             por propiedad</a>
           <div class="flex row start cm-social">
             <p>Compartir</p>
-              <a class="button facebook" data-layout="button_count" href="#"><i class="fab fa-facebook-f"></i></a>
+              <div class="sharethis-inline-share-buttons"></div>
               <a class="button whatsapp" id="wasBtn" href=""><i class="fab fa-whatsapp"></i></a>
-              <a class="button twitter" href="#"><i class="fab fa-twitter"></i></a>
           </div>
         </div>
         <h5>Descripción</h5>
@@ -175,8 +174,11 @@
     $('.facebook').attr("data-href", $thisUrl);
   </script>
 
+  <script src="//platform-api.sharethis.com/js/sharethis.js#property=5bf2db05d329fa00111f748e&product=inline-share-buttons"></script>
+
 <script>
   $(document).ready(function () {
+    
     var images = $(".cm-propierty-carrousel").find("li");
 
     $(images[0]).addClass('active');

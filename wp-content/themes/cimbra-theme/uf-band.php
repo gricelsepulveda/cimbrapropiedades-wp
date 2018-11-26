@@ -12,14 +12,28 @@
   }
    
   $dailyIndicators = json_decode($json);
-  //echo 'El valor actual de la UF es $' . $dailyIndicators->uf->valor;
-  //echo 'El valor actual del Dólar observado es $' . $dailyIndicators->dolar->valor;
-  //echo 'El valor actual del Dólar acuerdo es $' . $dailyIndicators->dolar_intercambio->valor;
-  //echo 'El valor actual del Euro es $' . $dailyIndicators->euro->valor;
-  //echo 'El valor actual del IPC es ' . $dailyIndicators->ipc->valor;
-  //echo 'El valor actual de la UTM es $' . $dailyIndicators->utm->valor;
-  //echo 'El valor actual del IVP es $' . $dailyIndicators->ivp->valor;
-  //echo 'El valor actual del Imacec es ' . $dailyIndicators->imacec->valor;
 ?>
 
-<div class="cm-uf-band flex row center">Lunes 27 de Agosto de 2018, Valor UF: <?php echo $dailyIndicators->uf->valor;?> CLP | <?php echo $dailyIndicators->uf->valor;?> USD</div>
+<script>
+  var date = new Date(),  // 2009-11-10
+  locale = "es-es",
+  month = date.toLocaleString(locale, {
+    month: "long"
+  });
+
+  var weekday = new Array(7);
+  weekday[0] =  "Domingo";
+  weekday[1] = "Lunes";
+  weekday[2] = "Martes";
+  weekday[3] = "Miércoles";
+  weekday[4] = "Jueves";
+  weekday[5] = "Viernes";
+  weekday[6] = "Sábado";
+  var nameDay = weekday[date.getDay()];
+  var day = date.getDay();
+  var year = date.getFullYear();
+  Month = month.replace(/\b\w/g, function(l){ return l.toUpperCase() })
+  var fullDate = nameDay + " " + day + " de " + Month +  " de " + year;
+</script>
+
+<div class="cm-uf-band flex row center"><script type="text/javascript">document.write(fullDate)</script>, Valor UF: <?php echo $dailyIndicators->uf->valor;?> CLP | <?php echo $dailyIndicators->uf->valor;?> USD</div>

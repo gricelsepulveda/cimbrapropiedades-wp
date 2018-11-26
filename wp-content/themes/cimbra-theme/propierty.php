@@ -34,7 +34,7 @@
 ?>
 
 <!--SLIDER -->
-<div class="cm-noslider-wrapper propierty">
+<div class="cm-noslider-wrapper propierty" style="background-image: url(<?php echo $postFeatImg; ?>);">
   <div class="flex col start cm-flex-propierty-noslider">
     <h2><?php echo $uf; ?>UF - <?php echo $m2; ?>m2<br /><?php echo $kind; ?></h2>
     <p>

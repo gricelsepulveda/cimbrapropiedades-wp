@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta content="noindex" name="robots" />
     <meta charset="utf-8" />
     <title>Cimbra Propiedades</title>
     <meta content="Cimbra Propieades" name="description" />

@@ -18,6 +18,7 @@
       <a href="<?php echo esc_url( home_url('/') );?>">
         <img alt="cimbra logo" src="<?php echo get_template_directory_uri() . '/img/'?>logo-cimbra.svg" alt="cimbra-logo"/>
       </a>
+      <div class="cm-mobile-button"></div>
       <div class="cm-nav-wrapper flex col end">
         <ul class="cm-social-nav flex row end">
           <li class="cm-social-item flex row end"><a href="tel:+56989029333"><i class="fas fa-phone"></i>+56 9 89029333</a></li>

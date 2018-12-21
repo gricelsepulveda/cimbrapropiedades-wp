@@ -38,21 +38,23 @@ $(document).ready(function(){
   });
 
   //MENU TOGGLE
-  $('nav.cm-main-nav > img').click(function(){
-    if ( window.outerWidth < 767 ) {
-      if ($('.cm-link-nav').height() == '0' ){
-        $('.cm-link-nav').height('auto');
-      }
-      else {
-        $('.cm-link-nav').height(0);
-      }
+  $('.cm-mobile-button').click(function(){
+    console.log('ocurre');
+    if ($('.cm-link-nav').height() == '0' ){
+      $('.cm-link-nav').height('auto');
+    }
+    else {
+      $('.cm-link-nav').height(0);
     }
   });
+
+
   $('li.cm-link-item').click(function(){
     if ($(this).hasClass('active')) {
       $('.cm-link-item').removeClass('active');
       $(this).addClass('active');
       if ( window.outerWidth < 767 ) {
+        console.log('pasó');
         console.log ('si');
         $('.cm-link-nav').height(0);
       }

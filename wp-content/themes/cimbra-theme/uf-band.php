@@ -30,7 +30,7 @@
   weekday[5] = "Viernes";
   weekday[6] = "Sábado";
   var nameDay = weekday[date.getDay()];
-  var day = date.getDay();
+  var day = date.getDate();
   var year = date.getFullYear();
   Month = month.replace(/\b\w/g, function(l){ return l.toUpperCase() })
   var fullDate = nameDay + " " + day + " de " + Month +  " de " + year;

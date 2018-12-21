@@ -105,23 +105,28 @@ nav.cm-main-nav{
   z-index: 2;
   @include flex-row-center;
   justify-content: space-between;
+  .cm-mobile-button {
+    display: none;
+  }
   @media #{$sm}{
     justify-content: start;
     width: 100vw;
     padding: 0px 20px 0px 0px;
-    &:after {
-      font-family: 'Font Awesome\ 5 Free'!important;
+    .cm-mobile-button {
       width: 42px;
       height: 42px;
       background-color: $black;
       color: $white;
-      font-size: 24px;
+      font-size: 24px!important;
       font-weight: 600;
       position: fixed;
       left: 0px;
       top: 28px;
       @include flex-row-center;
-      content: '\f0c9';
+      &:after {
+        content: '\f0c9';
+        font-family: 'Font Awesome\ 5 Free'!important;
+      }
       cursor: pointer;
     }
   }
@@ -130,7 +135,7 @@ nav.cm-main-nav{
     width: auto;
     @media #{$sm}{
       height: 36px;
-      padding-left: 42px;
+      margin-left: 42px;
       z-index: 1;
     }
   }
